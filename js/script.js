@@ -22,12 +22,17 @@ const displayAllSurah = async () => {
 
   allSurah.forEach((surah = {}) => {
     const { englishName, englishNameTranslation, number } = surah;
-    console.log(surah);
+    // console.log(surah);
+
+    const surahObject = JSON.stringify(surah);
+    console.log(surahObject);
 
     const surahDiv = document.createElement('div');
     surahDiv.classList.add('.col');
+
     surahDiv.innerHTML = `
-       <div class="surah-card" onclick="displayCompleteSurah('${surah}') "  data-bs-toggle="modal"  data-bs-target="#exampleModal">
+       <div class="surah-card"
+       onclick='displayCompleteSurah(${surahObject})' data-bs-toggle="modal"  data-bs-target="#exampleModal">
             <div class="surah-number-bookmark">
               <p id="surah-number">${number}</p>
               <i id="bookmark" class="bx bx-heart heart"></i>
@@ -38,6 +43,7 @@ const displayAllSurah = async () => {
             </div>
         </div>
       `;
+
     allSurahContainer.appendChild(surahDiv);
   });
 
@@ -48,5 +54,7 @@ const displayAllSurah = async () => {
 displayAllSurah();
 
 const displayCompleteSurah = (surah) => {
+  // const surahObject = JSON.parse(surah);
+  // console.log(surahObject);
   console.log(surah);
 };
