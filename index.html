@@ -51,17 +51,15 @@
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
           <div class="modal-header">
             <h5
               class="modal-title w-100 d-flex align-items-center justify-content-center"
               id="exampleModalLabel"
-              id="surah-name"
             >
               <img class="quran-img me-4" src="./images/quran.png" alt="" />
-
-              Modal title
+              <span id="surah-name"></span>
             </h5>
             <button
               type="button"
@@ -70,7 +68,34 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body">
+            <div class="ayat-card">
+              <div class="number-and-arabic-ayat-info">
+                <p id="sura-and-ayat-number">1:1</p>
+                <p id="arabic-ayat">
+                  يَكَادُ الْبَرْقُ يَخْطَفُ أَبْصٰرَهُمْ ۖ كُلَّمَآ أَضَآءَ
+                  لَهُم مَّشَوْا فِيهِ وَإِذَآ أَظْلَمَ عَلَيْهِمْ قَامُوا ۚ
+                  وَلَوْ شَآءَ اللَّهُ لَذَهَبَ بِسَمْعِهِمْ وَأَبْصٰرِهِمْ ۚ
+                  إِنَّ اللَّهَ عَلٰى كُلِّ شَىْءٍ قَدِيرٌ
+                </p>
+              </div>
+
+              <div class="translation-info">
+                <h6>
+                  BANGLA - M KHAN | <span class="tafsir">SEE TAFSIR</span>
+                </h6>
+              </div>
+
+              <div class="bangla-meaning">
+                <p id="bangla-meaning">
+                  এ সেই কিতাব যাতে কোনই সন্দেহ নেই। পথ প্রদর্শনকারী পরহেযগারদের
+                  জন্য,
+                </p>
+              </div>
+
+              <hr />
+            </div>
+          </div>
           <div class="modal-footer">
             <button
               type="button"

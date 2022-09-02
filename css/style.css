@@ -99,7 +99,8 @@ body {
 }
 
 /* Surah Card */
-.surah-card {
+.surah-card,
+.ayat-card {
   background-color: var(--bg-card);
   padding: 1rem;
   border-radius: 16px;
@@ -107,7 +108,8 @@ body {
   cursor: pointer;
 }
 
-.surah-number-bookmark {
+.surah-number-bookmark,
+.number-and-arabic-ayat-info {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -134,7 +136,8 @@ body {
   color: var(--icon-color);
 }
 
-.surah-name-info h3 {
+.surah-name-info h3,
+span#surah-name {
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--text-black);
@@ -150,4 +153,43 @@ body {
 .quran-img {
   width: 40px;
   height: 40px;
+}
+
+/* Modal Body */
+.modal-body {
+  background-color: var(--bg-container);
+}
+
+.ayat-card {
+  padding: 2.3rem;
+}
+
+.number-and-arabic-ayat-info {
+  flex-wrap: wrap;
+  font-size: 1.3rem;
+}
+
+#sura-and-ayat-number {
+  color: #088f73;
+  font-weight: 600;
+}
+
+#arabic-ayat {
+  direction: rtl;
+  line-height: 2.3rem;
+  font-weight: 500;
+}
+
+.translation-info h6 {
+  color: #088f73;
+  padding-bottom: 1rem;
+}
+
+span.tafsir {
+  color: #e3a410;
+}
+
+.bangla-meaning p#bangla-meaning {
+  color: var(--text-black);
+  font-size: 1.1rem;
 }

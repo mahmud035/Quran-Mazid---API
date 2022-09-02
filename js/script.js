@@ -25,7 +25,7 @@ const displayAllSurah = async () => {
     // console.log(surah);
 
     const surahObject = JSON.stringify(surah);
-    console.log(surahObject);
+    // console.log(surahObject);
 
     const surahDiv = document.createElement('div');
     surahDiv.classList.add('.col');
@@ -34,12 +34,12 @@ const displayAllSurah = async () => {
        <div class="surah-card"
        onclick='displayCompleteSurah(${surahObject})' data-bs-toggle="modal"  data-bs-target="#exampleModal">
             <div class="surah-number-bookmark">
-              <p id="surah-number">${number}</p>
+              <p>${number}</p>
               <i id="bookmark" class="bx bx-heart heart"></i>
             </div>
             <div class="surah-name-info">
-              <h3 >${englishName}</h3>
-              <h4 id="english-translation-name">${englishNameTranslation}</h4>
+              <h3>${englishName}</h3>
+              <h4>${englishNameTranslation}</h4>
             </div>
         </div>
       `;
@@ -53,8 +53,10 @@ const displayAllSurah = async () => {
 
 displayAllSurah();
 
-const displayCompleteSurah = (surah) => {
-  // const surahObject = JSON.parse(surah);
-  // console.log(surahObject);
+const displayCompleteSurah = (surah = {}) => {
+  const { englishName, number } = surah;
+  const surahName = document.getElementById('surah-name');
+  surahName.innerText = englishName;
+
   console.log(surah);
 };
