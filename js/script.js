@@ -1,6 +1,13 @@
 'use strict';
 
+const toggleSpinner = (displayValue) => {
+  document.getElementById('spinner').style.display = displayValue;
+};
+
 const loadAllData = async () => {
+  // display spinner
+  toggleSpinner('block');
+
   const url = `http://api.alquran.cloud/v1/quran/bn.bengali`;
   const res = await fetch(url);
   const data = await res.json();
@@ -20,7 +27,7 @@ const displayAllSurah = async () => {
     const surahDiv = document.createElement('div');
     surahDiv.classList.add('.col');
     surahDiv.innerHTML = `
-       <div class="surah-card">
+       <div class="surah-card" onclick="displayCompleteSurah('${surah}')">
             <div class="surah-number-bookmark">
               <p id="surah-number">${number}</p>
               <i id="bookmark" class="bx bx-heart heart"></i>
@@ -33,6 +40,13 @@ const displayAllSurah = async () => {
       `;
     allSurahContainer.appendChild(surahDiv);
   });
+
+  // Hide Spinner
+  toggleSpinner('none');
 };
 
 displayAllSurah();
+
+const displayCompleteSurah = (surah) => {
+  console.log(surah);
+};

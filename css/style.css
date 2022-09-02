@@ -60,14 +60,42 @@ select {
 
 body {
   font-family: 'Poppins', sans-serif;
+  position: relative;
 }
 
 /* Common CSS Classes */
+
+/** Spinner */
+
+#spinner {
+  display: none;
+  /* pointer-events: none; */
+  width: 3.5em;
+  height: 3.5em;
+  border: 0.4em solid transparent;
+  border-color: #02ab68;
+  border-top-color: #d8f1eb;
+  border-radius: 50%;
+  animation: loading-spinner 1s linear infinite;
+  display: flex;
+  justify-content: center;
+
+  position: absolute;
+  top: 40%;
+  left: 50%;
+}
+
+@keyframes loading-spinner {
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 /* All Surah Container */
 .surah-card-container {
   background-color: var(--bg-container);
   border-radius: 1rem;
+  min-height: 100vh;
 }
 
 /* Surah Card */
@@ -76,6 +104,7 @@ body {
   padding: 1rem;
   border-radius: 16px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  cursor: pointer;
 }
 
 .surah-number-bookmark {
@@ -103,7 +132,6 @@ body {
 .surah-number-bookmark .heart {
   font-size: 2.2rem;
   color: var(--icon-color);
-  cursor: pointer;
 }
 
 .surah-name-info h3 {
