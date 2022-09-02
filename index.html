@@ -4,11 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FavIcon -->
     <link rel="shortcut icon" href="./images/quran16.png" type="image/x-icon" />
     <!-- Font Awesome Link -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    />
+
+    <!-- Box Icons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
     />
     <!-- Bootstrap CSS -->
     <link
@@ -23,6 +30,26 @@
     <title>Quran Mazid</title>
   </head>
   <body>
+    <div class="divider my-5"></div>
+
+    <!-- All Surah Container -->
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        <div class="col">
+          <div class="surah-card">
+            <div class="surah-number-bookmark">
+              <p id="surah-number">1</p>
+              <i id="bookmark" class="bx bx-heart"></i>
+            </div>
+            <div class="surah-name-info">
+              <h3>Al-Baqarah</h3>
+              <h3>THE COW</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
