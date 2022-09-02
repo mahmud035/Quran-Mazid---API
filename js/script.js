@@ -27,13 +27,13 @@ const displayAllSurah = async () => {
     const surahDiv = document.createElement('div');
     surahDiv.classList.add('.col');
     surahDiv.innerHTML = `
-       <div class="surah-card" onclick="displayCompleteSurah('${surah}')">
+       <div class="surah-card" onclick="displayCompleteSurah('${surah}') "  data-bs-toggle="modal"  data-bs-target="#exampleModal">
             <div class="surah-number-bookmark">
               <p id="surah-number">${number}</p>
               <i id="bookmark" class="bx bx-heart heart"></i>
             </div>
             <div class="surah-name-info">
-              <h3 id="surah-name">${englishName}</h3>
+              <h3 >${englishName}</h3>
               <h4 id="english-translation-name">${englishNameTranslation}</h4>
             </div>
         </div>
