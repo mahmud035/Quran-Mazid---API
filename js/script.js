@@ -8,7 +8,7 @@ const loadAllData = async () => {
   // display spinner
   toggleSpinner('block');
 
-  const url = `http://api.alquran.cloud/v1/quran/bn.bengali`;
+  const url = `https://api.alquran.cloud/v1/quran/bn.bengali`;
   const res = await fetch(url);
   const data = await res.json();
   // console.log(data.data.surahs);
@@ -105,7 +105,7 @@ const displayCompleteSurah = async (surah, surahNumber) => {
 
 //* get Single Surah's Arabic Text and Audio Data
 const loadArabicText = async (surahNumber) => {
-  const url = `http://api.alquran.cloud/v1/surah/${surahNumber}/ar.alafasy`;
+  const url = `https://api.alquran.cloud/v1/surah/${surahNumber}/ar.alafasy`;
   // console.log(url);
   const res = await fetch(url);
   const data = await res.json();
