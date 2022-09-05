@@ -87,7 +87,7 @@ const displayCompleteSurah = async (surah, surahNumber) => {
          </div>
          <div class="translation-info">
               <h6>
-                  BANGLA - M KHAN | <span class="tafsir">SEE TAFSIR</span>
+                  BANGLA - M KHAN | <span class="tafsir">SEE TAFSIR</span> | <span><i onclick="playAudio('${allArabicAyat[count].audio}')" class="fa-regular fa-circle-play ms-2 fs-5 "></i> </span>
               </h6>
           </div>
 
@@ -111,4 +111,11 @@ const loadArabicText = async (surahNumber) => {
   const data = await res.json();
   // console.log(data.data.ayahs);
   return data.data.ayahs;
+};
+
+//* play audio function
+const playAudio = async (url) => {
+  const audio = new Audio(url);
+  audio.play();
+  console.log(url);
 };

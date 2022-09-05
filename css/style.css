@@ -190,6 +190,7 @@ span#surah-name {
 
 span.tafsir {
   color: #e3a410;
+  line-height: 1.5;
 }
 
 .bangla-meaning p#bangla-meaning {
