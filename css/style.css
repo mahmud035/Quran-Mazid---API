@@ -61,6 +61,7 @@ select {
 body {
   font-family: 'Poppins', sans-serif;
   position: relative;
+  background-color: var(--bg-card);
 }
 
 /* Common CSS Classes */
@@ -158,10 +159,12 @@ span#surah-name {
 /* Modal Body */
 .modal-body {
   background-color: var(--bg-container);
+  padding: 2rem;
 }
 
 .ayat-card {
   padding: 2.3rem;
+  margin-bottom: 1rem;
 }
 
 .number-and-arabic-ayat-info {
@@ -192,4 +195,16 @@ span.tafsir {
 .bangla-meaning p#bangla-meaning {
   color: var(--text-black);
   font-size: 1.1rem;
+}
+
+@media (min-width: 992px) and (max-width: 1300px) {
+  .ayat-card {
+    width: 65% !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .ayat-card {
+    width: 100% !important;
+  }
 }

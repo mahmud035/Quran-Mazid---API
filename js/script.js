@@ -16,7 +16,7 @@ const loadAllData = async () => {
 };
 
 const displayAllSurah = async () => {
-  const allSurah = await loadAllData();
+  const allSurah = await loadAllData(); //* Bangla Quran Data
 
   const allSurahContainer = document.getElementById('surah-card-container');
 
@@ -32,7 +32,7 @@ const displayAllSurah = async () => {
 
     surahDiv.innerHTML = `
        <div class="surah-card"
-       onclick='displayCompleteSurah(${surahObject})' data-bs-toggle="modal"  data-bs-target="#exampleModal">
+       onclick='displayCompleteSurah(${surahObject}, ${number})' data-bs-toggle="modal"  data-bs-target="#exampleModal">
             <div class="surah-number-bookmark">
               <p>${number}</p>
               <i id="bookmark" class="bx bx-heart heart"></i>
@@ -53,10 +53,62 @@ const displayAllSurah = async () => {
 
 displayAllSurah();
 
-const displayCompleteSurah = (surah = {}) => {
+//* Display Single Surah (Completely)
+const displayCompleteSurah = async (surah, surahNumber) => {
   const { englishName, number } = surah;
+
+  //* get All Arabic Ayat from Corresponding Sura
+  const allArabicAyat = await loadArabicText(surahNumber);
+  console.log(allArabicAyat);
+
+  let count = 0;
+
+  console.log(surah, surahNumber);
+
   const surahName = document.getElementById('surah-name');
   surahName.innerText = englishName;
 
-  console.log(surah);
+  const modalBody = document.getElementById('modal-body');
+  modalBody.textContent = '';
+
+  const allAyat = surah.ayahs; //* Single Surah's Bangla Data
+
+  allAyat.forEach((ayat = {}) => {
+    const { numberInSurah, text } = ayat;
+    // console.log(ayat);
+
+    const ayatDiv = document.createElement('div');
+    ayatDiv.classList.add('ayat-card', 'w-50', 'mx-auto');
+    ayatDiv.innerHTML = `
+        <div id="arabic-text-container" class="number-and-arabic-ayat-info">
+              <p id="sura-and-ayat-number">${number}:${numberInSurah}</p>
+              <p id="arabic-ayat">${allArabicAyat[count].text} </p>
+
+         </div>
+         <div class="translation-info">
+              <h6>
+                  BANGLA - M KHAN | <span class="tafsir">SEE TAFSIR</span>
+              </h6>
+          </div>
+
+          <div class="bangla-meaning">
+              <p id="bangla-meaning">${text}</p>
+          </div>
+        `;
+
+    modalBody.appendChild(ayatDiv);
+    count++;
+  });
+
+  // loadArabicText(surahNumber);
+};
+
+//* get Single Surah's Arabic Text and Audio Data
+const loadArabicText = async (surahNumber) => {
+  const url = `http://api.alquran.cloud/v1/surah/${surahNumber}/ar.alafasy`;
+  // console.log(url);
+  const res = await fetch(url);
+  const data = await res.json();
+  // console.log(data.data.ayahs);
+  return data.data.ayahs;
 };
