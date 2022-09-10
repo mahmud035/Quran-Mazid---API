@@ -38,7 +38,7 @@ const displayAllSurah = async () => {
        onclick='displayCompleteSurah(${surahObject}, ${number})' data-bs-toggle="modal"  data-bs-target="#exampleModal">
             <div class="surah-number-bookmark">
               <p>${number}</p>
-              <i id="bookmark" class="bx bx-heart heart"></i>
+              <i  class="bx bx-heart heart bookmark"></i>
             </div>
             <div class="surah-name-info">
               <h3>${newEnglishName}</h3>
@@ -49,6 +49,10 @@ const displayAllSurah = async () => {
 
     allSurahContainer.appendChild(surahDiv);
   });
+
+  // get all bookmark Icon
+  const allBookmarks = document.querySelectorAll('.bookmark');
+  createBookmark(allBookmarks);
 
   // Hide Spinner
   toggleSpinner('none');
@@ -123,6 +127,24 @@ const playAudio = async (url) => {
   console.log(url);
 };
 
+//* add Event listener to bookmark Icon
+const createBookmark = async (allBookmarks) => {
+  // console.log(allBookmarks);
+
+  allBookmarks.forEach((bookmark) => {
+    // console.log(bookmark);
+    bookmark.addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      console.log('bookmark icon clicked');
+
+      const bookmarkIcon = e.target;
+      bookmarkIcon.classList.toggle('bxs-heart');
+      console.log(bookmarkIcon);
+    });
+  });
+};
+
 //* add event listener to search input field
 document.getElementById('search-surah').addEventListener('keyup', async (e) => {
   // display spinner
@@ -163,7 +185,7 @@ const displaySearchedSurah = (searchedSurah) => {
        onclick='displayCompleteSurah(${surahObject}, ${number})' data-bs-toggle="modal"  data-bs-target="#exampleModal">
             <div class="surah-number-bookmark">
               <p>${number}</p>
-              <i id="bookmark" class="bx bx-heart heart"></i>
+              <i  class="bx bx-heart heart "></i>
             </div>
             <div class="surah-name-info">
               <h3>${newEnglishName}</h3>

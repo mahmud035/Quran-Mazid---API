@@ -168,6 +168,10 @@ span#surah-name {
   color: var(--text-light);
 }
 
+i.bxs-heart::before {
+  color: var(--green);
+}
+
 /* Modal */
 
 .quran-img {
