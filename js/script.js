@@ -122,3 +122,59 @@ const playAudio = async (url) => {
   audio.play();
   console.log(url);
 };
+
+//* add event listener to search input field
+document.getElementById('search-surah').addEventListener('keyup', async (e) => {
+  // display spinner
+  toggleSpinner('block');
+
+  const searchText = e.target.value;
+  // console.log(searchText);
+
+  const allSurah = await loadAllData(); //* Bangla Quran Data
+
+  const searchedSurah = allSurah.filter((surah) => {
+    // console.log(surah);
+    return surah.englishName.startsWith(`${searchText}`);
+  });
+  displaySearchedSurah(searchedSurah);
+});
+
+const displaySearchedSurah = (searchedSurah) => {
+  console.log(searchedSurah);
+  const allSurahContainer = document.getElementById('surah-card-container');
+  allSurahContainer.textContent = '';
+
+  searchedSurah.forEach((surah = {}) => {
+    const { englishName, englishNameTranslation, number } = surah;
+    console.log(surah);
+
+    const newEnglishName = englishName.replaceAll("'", '-');
+    // console.log(newEnglishName);
+
+    const surahObject = JSON.stringify(surah);
+    // console.log(surahObject);
+
+    const surahDiv = document.createElement('div');
+    surahDiv.classList.add('.col');
+
+    surahDiv.innerHTML = `
+       <div class="surah-card"
+       onclick='displayCompleteSurah(${surahObject}, ${number})' data-bs-toggle="modal"  data-bs-target="#exampleModal">
+            <div class="surah-number-bookmark">
+              <p>${number}</p>
+              <i id="bookmark" class="bx bx-heart heart"></i>
+            </div>
+            <div class="surah-name-info">
+              <h3>${newEnglishName}</h3>
+              <h4>${englishNameTranslation}</h4>
+            </div>
+        </div>
+      `;
+
+    allSurahContainer.appendChild(surahDiv);
+  });
+
+  // Hide Spinner
+  toggleSpinner('none');
+};
