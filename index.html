@@ -30,6 +30,34 @@
     <title>Quran Mazid</title>
   </head>
   <body>
+    <!-- Navbar -->
+    <nav class="navbar bg-transparent pt-3">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img
+            src="./images/quran-round-logo.png"
+            alt="Bootstrap"
+            width="45"
+            height="45"
+          />
+        </a>
+
+        <div role="search" class="position-relative d-none d-sm-block">
+          <input
+            class="form-control rounded-5 shadow-sm px-4 py-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <i id="search-icon" class="bx bx-search-alt-2"></i>
+        </div>
+        <h4 class="mb-0 d-sm-none quran-mazid-text">QURAN MAZID</h4>
+
+        <button class="btn btn-support rounded-5 px-4 py-2" type="submit">
+          Support
+        </button>
+      </div>
+    </nav>
     <div class="divider my-5"></div>
 
     <!-- Add Spinner -->
@@ -81,11 +109,6 @@
         </div>
       </div>
     </div>
-
-    <!-- <div id="arabic-text-container" class="number-and-arabic-ayat-info">
-      <p id="sura-and-ayat-number">${number}:${numberInSurah}</p>
-      <p id="arabic-ayat"></p>
-    </div> -->
 
     <!-- Bootstrap JS -->
     <script

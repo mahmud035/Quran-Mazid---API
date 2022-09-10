@@ -66,6 +66,25 @@ body {
 
 /* Common CSS Classes */
 
+/* Navbar */
+#search-icon {
+  position: absolute;
+  top: 55%;
+  right: 25px;
+  transform: translateY(-55%);
+  font-size: 22px;
+}
+
+.btn-support {
+  background-color: var(--green);
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.quran-mazid-text {
+  color: var(--green);
+}
+
 /** Spinner */
 
 #spinner {

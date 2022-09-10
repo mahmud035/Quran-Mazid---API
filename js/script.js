@@ -24,6 +24,9 @@ const displayAllSurah = async () => {
     const { englishName, englishNameTranslation, number } = surah;
     // console.log(surah);
 
+    const newEnglishName = englishName.replaceAll("'", '-');
+    // console.log(newEnglishName);
+
     const surahObject = JSON.stringify(surah);
     // console.log(surahObject);
 
@@ -38,7 +41,7 @@ const displayAllSurah = async () => {
               <i id="bookmark" class="bx bx-heart heart"></i>
             </div>
             <div class="surah-name-info">
-              <h3>${englishName}</h3>
+              <h3>${newEnglishName}</h3>
               <h4>${englishNameTranslation}</h4>
             </div>
         </div>
@@ -59,7 +62,7 @@ const displayCompleteSurah = async (surah, surahNumber) => {
 
   //* get All Arabic Ayat from Corresponding Sura
   const allArabicAyat = await loadArabicText(surahNumber);
-  console.log(allArabicAyat);
+  // console.log(allArabicAyat);
 
   let count = 0;
 
