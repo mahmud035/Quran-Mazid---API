@@ -111,10 +111,40 @@ body {
   }
 }
 
+/* Filter Surah */
+.filter-surah-and-bookmark {
+  background-color: var(--bg-container);
+  border-radius: 2rem 2rem 0 0;
+  padding-top: 2.3rem !important;
+}
+
+#see-favourites p {
+  font-size: 13.67px;
+  color: var(--text-light);
+}
+
+.filter-surah {
+  gap: 2rem;
+}
+
+.filter-surah > div {
+  min-width: 100px;
+  cursor: pointer;
+}
+
+.filter-surah > div > p {
+  font-size: 13.67px;
+  color: var(--text-light);
+}
+
+.filter-surah > div > div > strong:nth-child(1) {
+  font-weight: 600;
+}
+
 /* All Surah Container */
 .surah-card-container {
   background-color: var(--bg-container);
-  border-radius: 1rem;
+  border-radius: 0 0 2rem 2rem;
   min-height: 100vh;
 }
 
@@ -151,7 +181,8 @@ body {
   text-align: center;
 }
 
-.surah-number-bookmark .heart {
+.surah-number-bookmark .heart,
+.filter-surah-and-bookmark .heart {
   font-size: 2.2rem;
   color: var(--icon-color);
 }

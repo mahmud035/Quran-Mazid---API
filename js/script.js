@@ -140,6 +140,7 @@ const createBookmark = async (allBookmarks) => {
 
       const bookmarkIcon = e.target;
       bookmarkIcon.classList.toggle('bxs-heart');
+
       console.log(bookmarkIcon);
     });
   });
