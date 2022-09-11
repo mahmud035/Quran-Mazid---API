@@ -225,8 +225,26 @@ document.getElementById('serial').addEventListener('click', async () => {
 });
 
 //* add event listener to sort by Alphabet
-document.getElementById('alphabet').addEventListener('click', () => {
+document.getElementById('alphabet').addEventListener('click', async () => {
   setAndRemoveClassToElement('alphabet', 'total-ayah', 'serial', 'active');
+
+  const allSurah = await loadAllData(); //* Bangla Quran Data
+  console.log(allSurah);
+
+  const sortedSurahArray = allSurah.sort((a, b) => {
+    let fa = a.englishName.toLowerCase();
+    let fb = b.englishName.toLowerCase();
+
+    if (fa < fb) {
+      return -1;
+    }
+    if (fa > fb) {
+      return 1;
+    }
+    return 0;
+  });
+
+  displaySortedSurah(sortedSurahArray);
 });
 
 //* add event listener to sort by total ayah
