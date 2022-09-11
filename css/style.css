@@ -118,6 +118,10 @@ body {
   padding-top: 2.3rem !important;
 }
 
+#see-favourite {
+  cursor: pointer;
+}
+
 .filter-surah {
   gap: 2rem;
 }

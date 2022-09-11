@@ -34,7 +34,7 @@ const displayAllSurah = async () => {
     surahDiv.classList.add('.col');
 
     surahDiv.innerHTML = `
-       <div class="surah-card"
+       <div class="surah-card h-100"
        onclick='displayCompleteSurah(${surahObject}, ${number})' data-bs-toggle="modal"  data-bs-target="#exampleModal">
             <div class="surah-number-bookmark">
               <p>${number}</p>
@@ -282,7 +282,7 @@ const displaySortedSurah = (sortedSurahArray) => {
     surahDiv.classList.add('.col');
 
     surahDiv.innerHTML = `
-       <div class="surah-card"
+       <div class="surah-card h-100"
        onclick='displayCompleteSurah(${surahObject}, ${number})' data-bs-toggle="modal"  data-bs-target="#exampleModal">
             <div class="surah-number-bookmark">
               <p>${number}</p>
@@ -297,4 +297,7 @@ const displaySortedSurah = (sortedSurahArray) => {
 
     allSurahContainer.appendChild(surahDiv);
   });
+
+  // Hide Spinner
+  toggleSpinner('none');
 };
