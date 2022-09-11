@@ -38,7 +38,7 @@ const displayAllSurah = async () => {
        onclick='displayCompleteSurah(${surahObject}, ${number})' data-bs-toggle="modal"  data-bs-target="#exampleModal">
             <div class="surah-number-bookmark">
               <p>${number}</p>
-              <i  class="bx bx-heart heart bookmark"></i>
+              <i class="bx bx-heart heart bookmark"></i>
             </div>
             <div class="surah-name-info">
               <h3>${newEnglishName}</h3>
@@ -50,9 +50,8 @@ const displayAllSurah = async () => {
     allSurahContainer.appendChild(surahDiv);
   });
 
-  // get all bookmark Icon
-  const allBookmarks = document.querySelectorAll('.bookmark');
-  createBookmark(allBookmarks);
+  // call createBookmark function
+  createBookmark();
 
   // Hide Spinner
   toggleSpinner('none');
@@ -70,7 +69,7 @@ const displayCompleteSurah = async (surah, surahNumber) => {
 
   let count = 0;
 
-  console.log(surah, surahNumber);
+  // console.log(surah, surahNumber);
 
   const surahName = document.getElementById('surah-name');
   surahName.innerText = englishName;
@@ -106,8 +105,6 @@ const displayCompleteSurah = async (surah, surahNumber) => {
     modalBody.appendChild(ayatDiv);
     count++;
   });
-
-  // loadArabicText(surahNumber);
 };
 
 //* get Single Surah's Arabic Text and Audio Data
@@ -127,20 +124,27 @@ const playAudio = async (url) => {
   console.log(url);
 };
 
-//* add Event listener to bookmark Icon
-const createBookmark = async (allBookmarks) => {
-  // console.log(allBookmarks);
+// const getBookmarkArrayFromLocalStorage = async () => {
+//   let bookmarkArray = JSON.parse(localStorage.getItem('bookmarkArray'))
+//     ? JSON.parse(localStorage.getItem('bookmarkArray'))
+//     : [];
+//   return bookmarkArray;
+// };
+
+//* add Event listener to Bookmark Icon
+const createBookmark = () => {
+  const allBookmarks = document.querySelectorAll('.bookmark');
+  // console.log(surah);
 
   allBookmarks.forEach((bookmark) => {
     // console.log(bookmark);
     bookmark.addEventListener('click', (e) => {
       e.stopPropagation();
       e.stopImmediatePropagation();
-      console.log('bookmark icon clicked');
+      // console.log('bookmark icon clicked');
 
       const bookmarkIcon = e.target;
       bookmarkIcon.classList.toggle('bxs-heart');
-
       console.log(bookmarkIcon);
     });
   });
@@ -233,7 +237,7 @@ document.getElementById('alphabet').addEventListener('click', async () => {
   document.getElementById('serial').classList.add('ps-4', 'ps-sm-0');
 
   const allSurah = await loadAllData(); //* Bangla Quran Data
-  console.log(allSurah);
+  // console.log(allSurah);
 
   const sortedSurahArray = allSurah.sort((a, b) => {
     let fa = a.englishName.toLowerCase();
