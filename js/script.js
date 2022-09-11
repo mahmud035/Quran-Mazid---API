@@ -212,6 +212,8 @@ const setAndRemoveClassToElement = (id1, id2, id3, className) => {
 //* add event listeners to sort by Serial
 document.getElementById('serial').addEventListener('click', async () => {
   setAndRemoveClassToElement('serial', 'alphabet', 'total-ayah', 'active');
+  // for responsive purposes on mobile devices
+  document.getElementById('serial').classList.remove('ps-4', 'ps-sm-0');
 
   const allSurah = await loadAllData(); //* Bangla Quran Data
 
@@ -227,6 +229,8 @@ document.getElementById('serial').addEventListener('click', async () => {
 //* add event listener to sort by Alphabet
 document.getElementById('alphabet').addEventListener('click', async () => {
   setAndRemoveClassToElement('alphabet', 'total-ayah', 'serial', 'active');
+  // for responsive purposes on mobile devices
+  document.getElementById('serial').classList.add('ps-4', 'ps-sm-0');
 
   const allSurah = await loadAllData(); //* Bangla Quran Data
   console.log(allSurah);

@@ -261,6 +261,8 @@ span.tafsir {
   font-size: 1.1rem;
 }
 
+/** Media Queries */
+
 @media (min-width: 992px) and (max-width: 1300px) {
   .ayat-card {
     width: 65% !important;
@@ -270,5 +272,25 @@ span.tafsir {
 @media (max-width: 991px) {
   .ayat-card {
     width: 100% !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .filter-surah {
+    gap: 1rem;
+  }
+
+  .filter-surah > div > p {
+    font-size: 12px;
+  }
+
+  .filter-surah > div > div > strong:nth-child(1) {
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 460px) {
+  .bx-down-arrow-alt {
+    display: none;
   }
 }
