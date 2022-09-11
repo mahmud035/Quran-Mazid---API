@@ -63,6 +63,9 @@ displayAllSurah();
 const displayCompleteSurah = async (surah, surahNumber) => {
   const { englishName, number } = surah;
 
+  // display spinner
+  toggleSpinner('block');
+
   //* get All Arabic Ayat from Corresponding Sura
   const allArabicAyat = await loadArabicText(surahNumber);
   // console.log(allArabicAyat);
@@ -105,6 +108,9 @@ const displayCompleteSurah = async (surah, surahNumber) => {
     modalBody.appendChild(ayatDiv);
     count++;
   });
+
+  // Hide Spinner
+  toggleSpinner('none');
 };
 
 //* get Single Surah's Arabic Text and Audio Data
