@@ -118,13 +118,18 @@ body {
   padding-top: 2.3rem !important;
 }
 
-#see-favourites p {
-  font-size: 13.67px;
-  color: var(--text-light);
-}
-
 .filter-surah {
   gap: 2rem;
+}
+
+#serial.active,
+#total-ayah.active,
+#alphabet.active {
+  background-color: var(--bg-card);
+  padding: 0.8rem 1.2rem;
+  border-radius: 16px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  cursor: pointer;
 }
 
 .filter-surah > div {

@@ -201,3 +201,29 @@ const displaySearchedSurah = (searchedSurah) => {
   // Hide Spinner
   toggleSpinner('none');
 };
+
+const setAndRemoveClassToElement = (id1, id2, id3, className) => {
+  document.getElementById(id1).classList.add(className);
+  document.getElementById(id2).classList.remove(className);
+  document.getElementById(id3).classList.remove(className);
+};
+
+//* add event listeners to sort by Serial
+document.getElementById('serial').addEventListener('click', () => {
+  setAndRemoveClassToElement('serial', 'alphabet', 'total-ayah', 'active');
+});
+
+//* add event listener to sort by Alphabet
+document.getElementById('alphabet').addEventListener('click', () => {
+  setAndRemoveClassToElement('alphabet', 'total-ayah', 'serial', 'active');
+});
+
+//* add event listener to sort by total ayah
+document.getElementById('total-ayah').addEventListener('click', async (e) => {
+  setAndRemoveClassToElement('total-ayah', 'serial', 'alphabet', 'active');
+
+  const allSurahContainer = document.getElementById('surah-card-container');
+
+  const allSurah = await loadAllData(); //* Bangla Quran Data
+  // console.log(allSurah);
+});
