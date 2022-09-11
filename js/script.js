@@ -202,6 +202,7 @@ const displaySearchedSurah = (searchedSurah) => {
   toggleSpinner('none');
 };
 
+//* set and remove .active class to 3 filter category
 const setAndRemoveClassToElement = (id1, id2, id3, className) => {
   document.getElementById(id1).classList.add(className);
   document.getElementById(id2).classList.remove(className);
@@ -209,8 +210,18 @@ const setAndRemoveClassToElement = (id1, id2, id3, className) => {
 };
 
 //* add event listeners to sort by Serial
-document.getElementById('serial').addEventListener('click', () => {
+document.getElementById('serial').addEventListener('click', async () => {
   setAndRemoveClassToElement('serial', 'alphabet', 'total-ayah', 'active');
+
+  const allSurah = await loadAllData(); //* Bangla Quran Data
+
+  const sortedSurahArray = allSurah.sort((a, b) => {
+    // console.log(a.number);
+    // console.log(b.number);
+    return a.number - b.number;
+  });
+
+  displaySortedSurah(sortedSurahArray);
 });
 
 //* add event listener to sort by Alphabet
@@ -222,8 +233,50 @@ document.getElementById('alphabet').addEventListener('click', () => {
 document.getElementById('total-ayah').addEventListener('click', async (e) => {
   setAndRemoveClassToElement('total-ayah', 'serial', 'alphabet', 'active');
 
-  const allSurahContainer = document.getElementById('surah-card-container');
-
   const allSurah = await loadAllData(); //* Bangla Quran Data
-  // console.log(allSurah);
+
+  const sortedSurahArray = allSurah.sort((a, b) => {
+    // console.log(a.ayahs.length);
+    // console.log(b.ayahs.length);
+    return a.ayahs.length - b.ayahs.length;
+  });
+
+  displaySortedSurah(sortedSurahArray);
 });
+
+const displaySortedSurah = (sortedSurahArray) => {
+  const allSurahContainer = document.getElementById('surah-card-container');
+  allSurahContainer.textContent = '';
+
+  const sortedSurah = sortedSurahArray;
+
+  sortedSurah.forEach((surah = {}) => {
+    const { englishName, englishNameTranslation, number } = surah;
+    // console.log(surah);
+
+    const newEnglishName = englishName.replaceAll("'", '-');
+    // console.log(newEnglishName);
+
+    const surahObject = JSON.stringify(surah);
+    // console.log(surahObject);
+
+    const surahDiv = document.createElement('div');
+    surahDiv.classList.add('.col');
+
+    surahDiv.innerHTML = `
+       <div class="surah-card"
+       onclick='displayCompleteSurah(${surahObject}, ${number})' data-bs-toggle="modal"  data-bs-target="#exampleModal">
+            <div class="surah-number-bookmark">
+              <p>${number}</p>
+              <i  class="bx bx-heart heart bookmark"></i>
+            </div>
+            <div class="surah-name-info">
+              <h3>${newEnglishName}</h3>
+              <h4>${englishNameTranslation}</h4>
+            </div>
+        </div>
+      `;
+
+    allSurahContainer.appendChild(surahDiv);
+  });
+};
